@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!--  
+	<bean id="trade1" class="org.ness.com.model.Trade" scope="singleton">
+		<property name="tradeId" value="181818"/>
+		<property name="tradeType" value="Hsbc Trade"/>
+	</bean>
+	-->
+	
+	<!-- same class with different values and different bean id -->
+	<bean id="trade2" class="org.ness.com.model.Trade" scope="prototype">
+		<property name="tradeId" value="181819"/>
+		<property name="tradeType" value="Citi Trade"/>
+	</bean>
+	
+		
+	<!-- using the name attribute instead id and with special characters in name -->
+	<!--  
+	<bean name="trade3_with_special_charaters" class="org.ness.com.model.Trade" id="trade3" scope="singleton">
+		<property name="tradeId" value="181820"/>
+		<property name="tradeType" value="Kotak Trade"/>
+	</bean>
+	-->
+</beans>

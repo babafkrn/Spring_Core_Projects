@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	
+	<!-- configuring autowiring example -->
+	<bean id="transaction" class="org.ness.com.model.Transaction" autowire="byName">
+			
+	</bean>
+		
+	<bean id="privateBank1" class="org.ness.com.model.PrivateBank">
+		<property name="transactionType" value="Net Banking"/>
+		<property name="accountName" value="Baba Fakruddin"/>
+		<property name="accountNo" value="282828282"/>
+	</bean>
+	
+	<bean id="privateBank2" class="org.ness.com.model.PrivateBank">
+		<property name="transactionType" value="Withdraw"/>
+		<property name="accountName" value="Nazira Sulthana"/>
+		<property name="accountNo" value="282828283"/>
+	</bean>
+	
+	<bean id="governmentBank" class="org.ness.com.model.GovernmentBank">
+		<property name="transactionType" value="Cheque"/>
+		<property name="accountName" value="Baba Fakruddin"/>
+		<property name="accountNo" value="282828284"/>
+	</bean>
+	
+</beans>

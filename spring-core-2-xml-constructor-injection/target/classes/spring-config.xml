@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- two parameterized constructor -->
+	<bean id="trade1" class="org.ness.com.model.Trade">
+		<constructor-arg value="19191" index="0"/>
+		<constructor-arg value="Citi Trade" index="1"/>
+	</bean>
+	
+	<!-- three parameterized constructor with using some attributes of constructor-arg -->
+	<bean id="trade2" class="org.ness.com.model.Trade">
+		<constructor-arg value="19192" index="0" type="int"/>
+		<constructor-arg value="Citi" index="2" type="java.lang.String"/>
+		<constructor-arg value="Hsbc Trade" index="1" type="java.lang.String"/>
+	</bean>
+	
+	<!-- no constructor configured, empty bean, the result.i.e the values will be null -->
+	<bean id="trade3" class="org.ness.com.model.Trade">
+	</bean>
+	
+	<!-- one bean referring some other bean, has-a relationship -->
+	<bean id="trade4" class="org.ness.com.model.Trade">
+		<constructor-arg value="19193"></constructor-arg>
+		<constructor-arg ref="bank1"></constructor-arg>
+	</bean>
+	<bean id="bank1" class="org.ness.com.model.Bank">
+		<constructor-arg value="Citi"></constructor-arg>
+	</bean>
+	
+	<!-- configuring inner beans -->
+	<bean id="trade5" class="org.ness.com.model.Trade">
+		<constructor-arg ref="bank1" index="0" type="org.ness.com.model.Bank"></constructor-arg>
+		<constructor-arg index="1" type="org.ness.com.model.TradeDetails">
+		
+			<bean class="org.ness.com.model.TradeDetails">
+				<constructor-arg value="2050000" type="long"/>
+			</bean>
+			
+		</constructor-arg>
+	</bean>
+	
+	<!-- configuring list example -->
+	<bean id="bajaj" class="org.ness.com.model.BajajTrade">
+		<constructor-arg value="19194" index="0" type="int"/>
+		<constructor-arg value="Bajaj Trade" index="1" type="java.lang.String"/>
+	</bean>
+	<bean id="citi" class="org.ness.com.model.CitiTrade">
+		<constructor-arg value="19195" index="0" type="int"/>
+		<constructor-arg value="Citi Trade" index="1" type="java.lang.String"/>
+	</bean>
+	<bean id="icici" class="org.ness.com.model.IciciTrade">
+		<constructor-arg value="19196" index="0" type="int"/>
+		<constructor-arg value="icici Trade" index="1" type="java.lang.String"/>
+	</bean>
+	<bean id="trade6" class="org.ness.com.model.Trade">
+		<constructor-arg>
+			<list>
+				<ref bean="bajaj"/>
+				<ref bean="citi"/>
+				<ref bean="icici"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- configuring set example -->
+	<bean id="bajaj2" class="org.ness.com.model.BajajTrade">
+		<constructor-arg value="19197" index="0" type="int"/>
+		<constructor-arg value="Bajaj Trade" index="1" type="java.lang.String"/>
+	</bean>
+	<bean id="citi2" class="org.ness.com.model.CitiTrade">
+		<constructor-arg value="19198" index="0" type="int"/>
+		<constructor-arg value="Citi Trade" index="1" type="java.lang.String"/>
+	</bean>
+	<bean id="icici2" class="org.ness.com.model.IciciTrade">
+		<constructor-arg value="19199" index="0" type="int"/>
+		<constructor-arg value="icici Trade" index="1" type="java.lang.String"/>
+	</bean>
+	<bean id="trade7" class="org.ness.com.model.Trade">
+		<constructor-arg>
+			<set>
+				<ref bean="bajaj2"/>
+				<ref bean="citi2"/>
+				<ref bean="icici2"/>
+			</set>
+		</constructor-arg>
+	</bean>
+	
+	<!-- configuring map example -->
+	<bean id="bajaj3" class="org.ness.com.model.BajajTrade">
+		<constructor-arg value="19198" index="0" type="int"/>
+		<constructor-arg value="Bajaj Trade" index="1" type="java.lang.String"/>
+	</bean>
+	<bean id="citi3" class="org.ness.com.model.CitiTrade">
+		<constructor-arg value="19199" index="0" type="int"/>
+		<constructor-arg value="Citi Trade" index="1" type="java.lang.String"/>
+	</bean>
+	<bean id="icici3" class="org.ness.com.model.IciciTrade">
+		<constructor-arg value="20200" index="0" type="int"/>
+		<constructor-arg value="icici Trade" index="1" type="java.lang.String"/>
+	</bean>
+	<bean id="trade8" class="org.ness.com.model.Trade">
+		<constructor-arg>
+			<map>
+				<entry key="bajaj-key" value-ref="bajaj3"></entry>
+				<entry key="citi-key" value-ref="citi3"></entry>
+				<entry key="icici-key" value-ref="icici3"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	<!-- configuring spring bean inheritance example -->
+	<bean id="bajaj4" class="org.ness.com.model.BajajTrade">
+		<constructor-arg value="19198" index="0" type="int"/>
+		<constructor-arg value="Bajaj Trade" index="1" type="java.lang.String"/>
+	</bean>
+	<bean id="citi4" class="org.ness.com.model.CitiTrade">
+		<constructor-arg value="19199" index="0" type="int"/>
+		<constructor-arg value="Citi Trade" index="1" type="java.lang.String"/>
+	</bean>
+	<bean id="icici4" class="org.ness.com.model.IciciTrade">
+		<constructor-arg value="20200" index="0" type="int"/>
+		<constructor-arg value="icici Trade" index="1" type="java.lang.String"/>
+	</bean>
+	<bean id="trade9" class="org.ness.com.model.Trade">
+		<constructor-arg value="20201" type="int" index="0"></constructor-arg>
+		<constructor-arg value="Bajaj Trade" type="java.lang.String" index="1"></constructor-arg>
+		<constructor-arg value="Bajaj Mark" type="java.lang.String" index="2"></constructor-arg>
+		<constructor-arg ref="bajaj4" type="org.ness.com.model.BajajTrade" index="3"/>
+	</bean>
+
+	<bean id="trade10" class="org.ness.com.model.Trade">
+		<constructor-arg ref="citi4" type="org.ness.com.model.CitiTrade" index="0"/>
+		<constructor-arg ref="icici4" type="org.ness.com.model.IciciTrade" index="1"/>
+	</bean>
+
+</beans>
